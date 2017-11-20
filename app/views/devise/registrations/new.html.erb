@@ -1,0 +1,46 @@
+<div class="container" style="margin-top: 200px; border:1px solid #eee">
+
+<h2 class="text-center">Sign Up</h2><hr>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="input-group">
+	  <span class="input-group-addon" style="padding-right: 130px;">Email</span>
+	  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder: "dongguk@dgu.edu" %>
+	</div><br />
+  <div class="input-group">
+	  <span class="input-group-addon" style="padding-right: 130px;">Email</span>
+	  <%= f.email_field :email, autofocus: true, class:"form-control", placeholder: "dongguk@dgu.edu" %>
+	</div><br />
+  <div class="input-group">
+	  <span class="input-group-addon" style="padding-right: 100px;">Password</span>
+    <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder: "Enter password more than 6 characters" %>
+	</div><br />
+  
+  <div class="input-group">
+	  <span class="input-group-addon">Password_confirmation</span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control  ", placeholder: "Password_confirmation" %>
+	</div><br />
+  <div class="input-group">
+	  <span class="input-group-addon" style="padding-right: 120px;">Name</span>
+    <%= f.text_field :name, autocomplete: "off", class:"form-control", placeholder: "LeeJaeChoul" %>
+	</div><br />
+	<div class="input-group">
+	  <span class="input-group-addon" style="padding-right: 90px;">Nationality</span>
+    <%= f.text_field :nationality, autocomplete: "off", class:"form-control", placeholder: "Korea or etc.." %>
+	</div><br />
+  <div class="input-group">
+	  <%= f.label :Birth %>
+    <%= f.text_field :birth, autocomplete: "off", class:"form-control", placeholder: "01022223333" %>
+	</div><br />
+  <div class="row text-center">
+    <div class="actions col-md-6">
+      <%= f.submit "Submit", class: "btn btn-xl" %>
+    </div>
+    <div class="g-mb-20 col-md-6">
+      <%= link_to "Sign in", new_session_path(resource_name), class: "btn btn-xl" %>
+    </div>
+  </div><br/>
+<% end %>
+
+</div>

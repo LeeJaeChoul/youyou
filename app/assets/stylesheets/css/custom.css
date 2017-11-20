@@ -1,0 +1,107 @@
+@font-face {
+  font-family: NanumSquareWeb;
+  src: local(NanumSquareR),
+       local(NanumSquare),
+       url(NanumSquareR.eot?#iefix) format('embedded-opentype');
+  font-style: normal;
+  font-weight: normal;
+  unicode-range: U+0-10FFFF;
+}
+body {
+    font-family: NanumSquareWeb, sans-serif;
+}
+nav.shrink {
+  background-color:rgba(255, 255, 255, 0.6);
+}
+.main_banner {
+    background-image: url("/main_banner.png");
+    height: 700px;
+    background-size: cover;
+}
+
+.navbar-custom li a{
+    color:#222;
+}
+.navbar-brand {
+    color:#222;
+}
+.text-center {
+    text-align: center;
+}
+
+.comment-btn {
+    background-color: #fed136;
+    color: #fff;
+}
+
+.people-card {
+    border: 1px solid #ddd;
+    background-color: #f4e2ad;
+    padding: 20px;
+}
+
+.people-img {
+    background-color: #eee;
+    
+}
+
+#MainNav {
+    background-color: none;
+}
+
+.intro-img {
+    margin: 10px;
+    width: 80%;
+}
+
+.intro-box {
+     border:50px;
+}
+.service-box1, .service-box2 {
+    height: 250px;
+    padding: 3%;
+    border-radius: 50px;
+    color: white;
+    position: relative;
+    margin-right: 10px;
+}
+
+.service-box1 {
+  background-color: #EF3D4A;
+}
+
+.service-box2 {
+  background-color: #79A6D7;
+}
+
+.service-content {
+    padding-top:30px;
+    text-align:left;
+}
+.text-center {
+    text-align:center;
+}
+
+.contact-logo {
+    width:80%;
+}
+
+.g-mt-10 { margin-top:10px; }
+.g-mt-20 { margin-top:20px; }
+.g-mt-30 { margin-top:30px; }
+.g-mt-40 { margin-top:40px; }
+.g-mt-50 { margin-top:50px; }
+.g-mt-60 { margin-top:60px; }
+.g-mt-70 { margin-top:70px; }
+.g-mt-80 { margin-top:80px; }
+.g-mt-100 { margin-top:100px; }
+
+.g-mb-10 { margin-bottom:10px; }
+.g-mb-20 { margin-bottom:20px; }
+.g-mb-30 { margin-bottom:30px; }
+.g-mb-40 { margin-bottom:40px; }
+.g-mb-50 { margin-bottom:50px; }
+.g-mb-60 { margin-bottom:60px; }
+.g-mb-70 { margin-bottom:70px; }
+.g-mb-80 { margin-bottom:80px; }
+.g-mb-100 { margin-bottom:100px; }
