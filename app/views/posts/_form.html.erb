@@ -1,0 +1,104 @@
+<img class="img-responsive" src='<%= asset_path "request_banner.png" %>' alt="">
+<div class="container g-mt-40 col-md-10 col-md-offset-1">
+
+<h4>Write</h4><hr>
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <center>
+    <div class="col-md-4 col-sm-12">
+      <div class="col-md-10">
+          <% if @post.user.profile.url.nil? %>
+            <img class="img-responsive post_profile" src='<%= asset_path "youyou_logo.png" %>' alt="">
+          <% else %>
+            <img class="img-responsive post_profile" src="<%= current_user.profile.url %>" >
+          <% end %>
+      </div>
+      <div class="g-mt-60 col-md-10">
+        <%= f.label :Background_Image, class: "state" %>
+        <div class="post_bg g-mb-20" id="post_bg" style="width:239px;">
+          Additional Images
+          (Optional)
+        </div>
+        <div style="margin-left: 15%;">
+        <%= f.file_field :image, class: "image_upload" %>
+        </div>
+      </div>
+    </div>
+    </center>
+    <div class="col-md-6 col-sm-12">
+      <div class="input-group">
+        <%= f.label :User_name_ %>
+        <div class="form-control">
+        <%= @post.user.name %>
+        </div>
+      </div>
+      <div class="input-group g-mt-20">
+        <%= f.label :category_id %><br>
+        <%= f.collection_select :category_id, Category.all, :id, :name, {:include_blank => 'Choose Category'}, {:class => 'form-control'} %>
+      </div>
+      <div class="input-group g-mt-20">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+      <div class="input-group g-mt-20">
+        <%= f.label :introduction %><br>
+        <%= f.text_area :introduction, class:"form-control", :maxlength=>"200", :rows =>"7", 
+        placeholder: "If you want to request a purchase, please fill out.
+  -name
+  -Details
+  -Price bracket"  %>
+      </div>
+      <div class="input-group g-mt-20">
+        <%= f.label :day %><b> (Click the space below)</b><br>
+        <%= f.text_field :startday, class:"datepicker text-center" %><b> ~ </b>
+        <%= f.text_field :finalday, class:"datepicker text-center" %>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        $(".datepicker").datepicker('setDate', new Date());
+        $('.datepicker').datepicker();
+        });
+        </script>
+      </div>
+      <div class="actions">
+        <%= f.submit "Register", class: "btn post-btn g-mt-50" %>
+      </div>
+    </div>
+  </div> <!-- row -->
+<% end %>
+</div>
+<script>
+var upload = document.getElementsByClassName('image_upload')[0],
+    holder = document.getElementById('post_bg'),
+    state = document.getElementsByClassName('state');
+
+upload.onchange = function (e) {
+  e.preventDefault();
+
+  var file = upload.files[0],
+      reader = new FileReader();
+  reader.onload = function (event) {
+    var img = new Image();
+    img.src = event.target.result;
+    img.style.width = 239;
+    img.style.height = 239;
+    
+    holder.innerHTML = '';
+    holder.appendChild(img);
+  };
+  reader.readAsDataURL(file);
+
+  return false;
+};
+</script>  
+

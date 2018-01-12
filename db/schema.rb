@@ -11,26 +11,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115042100) do
+ActiveRecord::Schema.define(version: 20171204090714) do
+
+  create_table "categories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id"
+
+  create_table "chats", force: :cascade do |t|
+    t.boolean  "person"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "body",       null: false
+    t.string   "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "dictionaries", force: :cascade do |t|
+    t.text     "ask"
+    t.text     "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "category_id",  null: false
+    t.integer  "user_id"
+    t.string   "title",        null: false
+    t.text     "introduction"
+    t.text     "startday",     null: false
+    t.text     "finalday",     null: false
+    t.string   "image"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "posts", ["category_id"], name: "index_posts_on_category_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "youyou",                             null: false
-    t.string   "email",                              null: false
-    t.string   "encrypted_password",                 null: false
-    t.string   "name",                               null: false
-    t.string   "nationality",                        null: false
-    t.string   "birth",                              null: false
-    t.string   "area",                               null: false
+    t.boolean  "youyou",                 default: false, null: false
+    t.string   "email",                                  null: false
+    t.string   "encrypted_password",                     null: false
+    t.string   "name",                                   null: false
+    t.string   "nationality",                            null: false
+    t.string   "birth",                                  null: false
+    t.string   "profile"
+    t.boolean  "area",                   default: false, null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

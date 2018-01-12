@@ -1,6 +1,8 @@
 @import "bootstrap";
 @import "css/agency.min";
-@import "css/font-awesome.min";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import 'foundation_and_overrides';
 @import "css/custom";
 
 /*
@@ -16,5 +18,9 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap-datepicker
  *= require_self
+ *= require bootstrap-datepicker
+ //= require foundation_and_overrides
+
  */

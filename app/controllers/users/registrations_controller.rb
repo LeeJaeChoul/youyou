@@ -13,9 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   def edit
+   end
 
   # PUT /resource
   # def update
@@ -41,7 +40,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:youyou])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:traveler])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nationality])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:profile])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:birth])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:area])
   end
@@ -51,6 +52,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:nationality])
     devise_parameter_sanitizer.permit(:account_update, keys: [:youyou])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:traveler])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:profile])
     devise_parameter_sanitizer.permit(:account_update, keys: [:birth])
     devise_parameter_sanitizer.permit(:account_update, keys: [:area])
   end

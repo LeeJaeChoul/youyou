@@ -1,0 +1,124 @@
+<img class="img-responsive" src='<%= asset_path "request_banner.png" %>' alt="">
+<div class="container g-mt-40 col-md-10 col-md-offset-1">
+
+<h4>Show</h4><hr>
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row g-mb-50">
+    <center>
+      <div class="g-mt-60 col-md-12 col-sm-12">
+        <div class="g-mb-20" style="width:80%; height: inherit;">
+        <% if @post.image.url.nil? %>
+          <div class="post_bg">
+            Image does not exist.
+          </div>
+        <% else %>
+          <img class="img-responsive text-center" src="<%= @post.image.url %>">
+        <% end %>
+        </div><hr>
+      </div>
+    </center>
+  </div>
+  <div class="row g-mb-50">
+    <center>
+    <div class="col-md-offset-1 col-md-5">
+      <div class="row">
+        <div class="col-md-4 col-sm-12">
+        <% if @post.user.profile == nil %>
+          <img class="img-responsive post_show_profile" src='<%= asset_path "youyou_logo.png" %>' alt="">
+        <% else %>
+          <img class="img-responsive post_show_profile" src="<%= @post.user.profile.url %>" >
+        <% end %>
+        </div>
+        <div class="col-md-8 col-sm-12 g-mt-30">
+          <h4><%= @post.user.name %></h4>
+          <%= @post.user.nationality %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 g-mt-30">
+      <h4>Travel Period</h4>
+      <h4 class="datepicker"><%= @post.startday %> ~ <%= @post.finalday %></h4>
+    </div>
+    </center>
+  </div><hr>
+  <div class="row g-mb-40">
+    <div class="col-md-12 col-sm-12">
+      <h3>Title</h3>
+      <pre><p><%= @post.title %></p></pre><hr>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <h3>Self-introduction</h3>
+      <pre><p><%= @post.introduction %></p></pre>
+    </div>
+  </div>
+  <div class="row">
+    <div class="g-mt-50 text-center">
+      <% if current_user == @post.user %>
+        <%= link_to 'Edit', edit_post_path(@post), class: "btn post-btn" %>
+        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn post-btn" %>
+      <% end %>
+        <%= link_to 'Back', posts_path, class: "btn post-btn" %>
+    </div>
+  </div>
+<% end %><hr> <!-- 여기까지 Post -->
+
+<h3 class="g-mt-50">Comments</h3><br>
+<% @post.comments.each do |comment| %>
+  <% if @post.comments.nil? %>
+  <% else %>
+  <div class="row g-mb-30">
+    <center>
+    <div class="col-md-2 col-sm-1">
+      <% if comment.user.profile.url.nil? %>
+        <img class="img-responsive comment_profile" src='<%= asset_path "youyou_logo.png" %>' alt="">
+      <% else %>
+        <img class="img-responsive comment_profile" src="<%= comment.user.profile.url %>" >
+      <% end %>
+      <p><%= comment.username %></p>
+    </div>
+    </center>
+    <div class="col-md-8 col-sm-5 media-area">
+    	<pre><p><%= comment.body %></p></pre>
+  	</div>
+  	<div class="col-md-2 col-sm-2 media-area">
+  		<p><%= time_ago_in_words(comment.created_at) %></p>
+  		<% if current_user == comment.user %>
+  		  <strong><%= link_to 'Destroy', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?'} %></strong>
+  		<% else %>
+  		<% end %>
+  	</div>
+  </div>
+  <% end %>
+<% end %>
+	<%= form_for([@post, @post.comments.build]) do |f| %>
+  	<h3 class="g-mt-50">Create Comments</h3>
+  	<% if current_user.nil? %>
+  		<div class="row text-center g-mb-80">
+  			<h2>please try again after Log in.</h2>
+  		</div>
+  	<% else %>
+  	<div class="row" style="vertical-align: middle; margin-bottom:100px;">
+      <div class="col-md-3">
+        <%= f.label :'User name' %> : <%= current_user.name %>
+	    </div>
+		  <div class="col-md-5 col-sm-12">
+        <%= f.text_area :body, :maxlength=>"200", :rows =>"3", :cols =>"60", placeholder: "Please comment within 200 characters" %>
+		  </div>
+		  <div class="col-md-4 col-sm-12 g-mt-30 text-center">
+        <%= f.submit "Register", class: "btn submit-btn" %>
+		  </div>
+    </div>
+	  <% end %> 
+  <% end %><hr>
+</div>

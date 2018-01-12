@@ -15,4 +15,5 @@
 //= require agency
 //= require jqBootstrapValidation
 //= require bootstrap.min
+//= require bootstrap-datepicker
 //= require_tree .

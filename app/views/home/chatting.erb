@@ -1,0 +1,32 @@
+<img class="img-responsive" src='<%= asset_path "request_banner.png" %>' alt="">
+<div class="container">
+  <cetner>
+  <div class="g-mt-100 col-md-6 col-md-offset-3 chatboot">
+    <h3 class="text-center">Ask for Bot</h3><hr>
+    <div class="chat-field">
+      <% Chat.all.each do |c| %>
+        <% if c.person? %>
+          <div style="padding:5px;">
+            <p class="chat-content"><%= c.content %></p><br>
+            <img class="youyou-chat-img" src='<%= asset_path "people.png" %>' alt="">
+            <p style="padding-left:5px"><%= c.person ? "user" : "bot" %></p>
+          </div>
+        <% else %>
+          <div style="text-align:right; padding:5px;">
+            <p class="chat-content"><%= c.content %></p>
+            <img class="youyou-chat-img" src='<%= asset_path "youyou_logo.png" %>' alt=""><br>
+            <p style="padding-right:13px;"><%= c.person ? "user" : "bot" %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= error %>
+    <div class="chat-input-field text-center g-mt-10">
+      <form action="/createchat" method="GET">
+        <input type="text" name="content">&nbsp
+        <input type="submit" value="Done" class="btn chat-btn">
+      </form>
+    </div>
+  </div>
+  </cetner>
+</div><hr>

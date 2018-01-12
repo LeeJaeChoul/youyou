@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
+  resources :posts do
+    resources :comments
+  end
+  resources :categories
    devise_for :users, controllers: 
    { 
      registrations: "users/registrations"
    }
   root 'home#index'
-  get "home/chatroom"
-
+  get '/chatting' => 'home#chatting'
+  get '/learnchat' => "home#learnchat"
+  get '/createchat' => "home#createchat"
+  get '/learn' => "home#learn"
+  get "/users/sign_out"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

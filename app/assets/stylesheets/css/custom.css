@@ -9,6 +9,14 @@
 }
 body {
     font-family: NanumSquareWeb, sans-serif;
+    height:100%;
+}
+pre {
+  background-color: #fff;
+  border: none;
+}
+.footer {
+  bottom: 0px;
 }
 nav.shrink {
   background-color:rgba(255, 255, 255, 0.6);
@@ -25,12 +33,7 @@ nav.shrink {
 .navbar-brand {
     color:#222;
 }
-.text-center {
-    text-align: center;
-}
-
 .comment-btn {
-    background-color: #fed136;
     color: #fff;
 }
 
@@ -86,6 +89,179 @@ nav.shrink {
     width:80%;
 }
 
+.youyou-chat {
+  right: 20px;
+  bottom: 20px;
+  position: fixed;
+  z-index: 1;
+}
+.youyou-chat:hover {
+  cursor:pointer;
+}
+
+.youyou-chat-img {
+  height:50px;
+  width:auto;
+}
+
+.input-group {
+  width:100%;
+}
+
+.user-btn {
+  color: #333;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 40%;
+  background-color: #fff;
+}
+.user-btn:hover {
+  background-color:#333;
+  color:#fff;
+}
+.dropdown-menu {
+  background-color: rgba(164, 217, 242, 0.8)
+}
+.head-dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.post_profile {
+  border: 1px solid black;
+  border-radius: 50%;
+  height:239px;
+  width:239px;
+}
+.post_show_profile {
+  border: 1px solid black;
+  border-radius: 50%;
+  height:130px;
+  width:150px;
+}
+.comment_profile {
+  border: 1px solid black;
+  border-radius: 50%;
+  height:50px;
+  width:50px;
+}
+.post_bg {
+  border: 1px solid black;
+  height:239px;
+  width:239px;
+  line-height: 239px;
+}
+.datepicker:hover {
+  cursor: pointer;
+}
+.datepicker td:hover {
+  border: 1px solid black;
+}
+.post-btn {
+  color: #fff;
+  background-color: #333;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 20%;
+  
+}
+.post-btn:hover {
+  background-color:#fff;
+  color:#333;
+}
+.submit-btn {
+  color: #fff;
+  background-color: #333;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 30%;
+  
+}
+.submit-btn:hover {
+  background-color:#fff;
+  color:#333;
+}
+.write-btn {
+  color: #fff;
+  background-color: #333;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 15%;
+}
+.write-btn:hover {
+  background-color:#fff;
+  color:#333;
+}
+.post-box {
+  text-align: center;
+  box-shadow: 1px 1px #ddd;
+  height: 400px;
+  border: 1px solid #eee;
+  padding: 0px;
+  cursor: pointer;
+}
+.post-box:hover {
+  top: -10px;
+}
+.post-img {
+  height: 70%;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+.post-profile {
+  border-radius: 50%;
+  line-height: 30%;
+  height: 80px;
+  margin-top:10px;
+}
+.post-profile-box {
+  border-right: 1px solid #ddd;
+  height:30%;
+  float:left;
+  padding-top:7px;
+}
+.post-content{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.chatboot {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 50px;
+}
+.chat-field {
+  background-color: #eee;
+  color: #333;
+  overflow:scroll;
+  height: 50%;
+}
+.chat-btn {
+  color: #333;
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 20%;
+}
+.chat-content {
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.chat-btn:hover {
+  color: #fff;
+  background-color: #333;
+}
+.chat-input-field {
+  color: #333;
+}
+@media (min-width:768px) {
+  .post-box { width: 32%; margin-left:10px;}
+}
+@media (max-width:768px) {
+  .media-area { text-align:center; }
+  .post-profile {
+    width:50px;
+  }
+}
 .g-mt-10 { margin-top:10px; }
 .g-mt-20 { margin-top:20px; }
 .g-mt-30 { margin-top:30px; }

@@ -1,0 +1,39 @@
+<img class="img-responsive" src='<%= asset_path "request_banner.png" %>' alt="">
+<div class="container g-mt-40 col-md-10 col-md-offset-1">
+  <div class="row">
+    <%= link_to 'Write', new_post_path, class: "btn write-btn" %><hr>
+  </div>
+  <div class="row text-center">
+  <% @posts.each do |post| %>
+    <div class="col-sm-12 post-box g-mb-50" onClick="location.href='/posts/<%= post.id %>'">
+      <% if post.image.url.nil? %>
+        <img class="img-responsive post-img" src='<%= asset_path "post-img-default.png" %>'>
+      <% else %>
+        <img class="img-responsive post-img" src="<%= post.image.url %>">
+      <% end %>
+      <div class="row" style="margin: 0px;">
+        <div class="col-md-3 col-sm-2 post-profile-box">
+          <% if post.user.profile.url.nil? %>
+          <img class="img-responsive post-profile" src='<%= asset_path "youyou_logo.png" %>'>
+          <% else %>
+          <img class="img-responsive post-profile" src="<%= post.user.profile.url %>">  
+          <% end %>
+        </div>
+        <div class="col-md-9 col-sm-9 post-content g-mt-10">
+          <% if post.category.name == "Ask for Help" %>
+          <font color="lightblue"><b><%= post.category.name %></b></font><br>
+          <% else %>
+          <font color="red"><b><%= post.category.name %></b></font><br>
+          <% end %>
+          <%= post.user.name %><br>
+          <%= post.startday %> ~ <%= post.finalday %><br>
+          <%= post.title %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="col-md-12 col-sm-12 text-center">
+    <%= will_paginate @posts,renderer: BootstrapPagination::Rails %><hr>
+  </div>
+</div>

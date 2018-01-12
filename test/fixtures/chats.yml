@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: false
+  content: MyText
+
+two:
+  person: false
+  content: MyText

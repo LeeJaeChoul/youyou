@@ -1,59 +1,62 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>YOU-YOU</title>
   <%= stylesheet_link_tag    'application' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  
   <!-- 나눔스퀘어 폰트 -->
   <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
 </head>
 <body id="page-top">
-
   <nav id="mainNav" class="navbar navbar-custom navbar-fixed-top">
-        <div class="container">
-             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu
-                </button>
-                <a class="navbar-brand page-scroll" href="/">YOU YOU</a>
-            </div>
+    <div class="container">
+         <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span> Menu
+        </button>
+        <a class="navbar-brand page-scroll" href="/">YOU YOU</a>
+      </div>
 
-             <!--Collect the nav links, forms, and other content for toggling  -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="/">HOME</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="home/chatroom">REQUEST</a>
-                    </li>
-                    <% if user_signed_in? %>
-                      <li><a href="#"><%= current_user.email %></a></li>
-                      <li><%= link_to "Log out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
-                    <% else %>
-                      <li><%= link_to "Log in", new_user_session_path %></li>
-                      <li><%= link_to "Join", new_user_registration_path %></li>
-                    <% end %>
-                </ul>
-            </div>
-             <!--/.navbar-collapse--> 
-        </div>
-         <!--/.container-fluid -->
-    </nav>
-
+         <!--Collect the nav links, forms, and other content for toggling  -->
+      <div class="collapse navbar-collapse dropdown" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="hidden">
+              <a href="#page-top"></a>
+          </li>
+          <li>
+            <a class="page-scroll" href="/">HOME</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="/posts">REQUEST</a>
+          </li>
+          <% if user_signed_in? %>
+            <li class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><a href="#"><%= current_user.email %></a></li>
+              <ul class="head-dropdown-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li><%= link_to "My Profile", edit_user_registration_path %></li>
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
+              </ul>
+          <% else %>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Join", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
+       <!--/.navbar-collapse--> 
+    </div>
+     <!--/.container-fluid -->
+  </nav>
   <!-- /. main_banner -->
-    
-      <%= yield %>
-
-    </div> <!-- /container -->
+  <div class="youyou-chat">
+    <a href="/chatting"><img class="youyou-chat-img" src='<%= asset_path "youyou_logo.png" %>' alt=""></a>
+  </div>
+  <%= yield %>
+  <div class="container">
+    <%= render :partial => "layouts/footer" %>
+  </div>
 </body>
 </html>

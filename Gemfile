@@ -6,9 +6,19 @@ gem 'devise'     # 회원가입 및 인증
 gem 'rolify'     # role 관리
 gem 'authority'  # 권한설정
 
+#이미지업로드
+gem 'carrierwave', '~> 1.0'
+
+# 달력
+gem 'bootstrap-datepicker-rails'
+gem 'watu_table_builder', :require => 'table_builder'
+
+#페이징기법
+gem 'will_paginate-bootstrap'
+
 # 페이지 뷰를 깔끔하게 보이도록 하기 위해서 아래의 두 젬을 추가로 설치한다.
 gem 'bootstrap-sass'
-
+gem 'foundation-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -20,8 +30,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
+gem 'therubyracer', platforms: :ruby
+gem 'figaro'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
